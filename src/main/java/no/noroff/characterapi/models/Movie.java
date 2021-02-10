@@ -1,7 +1,10 @@
 package no.noroff.characterapi.models;
 
+import com.fasterxml.jackson.annotation.JsonGetter;
+
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Movie {
@@ -21,6 +24,13 @@ public class Movie {
     private String picture;
     @Column(name = "trailer")
     private String trailer;
+
+    @ManyToOne
+    @JoinColumn(name = "franchise_id")
+    private Franchise franchise;
+
+    @ManyToMany(mappedBy = "movies")
+    private List<MovieCharacter> movieCharacters;
 
     public void setId(Long id) {
         this.id = id;

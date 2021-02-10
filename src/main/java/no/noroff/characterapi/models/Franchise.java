@@ -13,11 +13,18 @@ public class Franchise {
     private Long id;
 
     @NotNull //hibernate infers @Column(nullable = false) from this
+    @Column(name = "name")
     private String name;
+
+    @Column(name = "description")
     private String description;
 
-    //List<Movie> movies;
+    @OneToMany
+    @JoinColumn(name="franchise_id")
+    List<Movie> movies;
 
+    //I think this can be done without a formal relation
+    //Not implementing for now
     //List<MovieCharacter> movieCharacters;
 
 
@@ -43,5 +50,13 @@ public class Franchise {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public List<Movie> getMovies() {
+        return movies;
+    }
+
+    public void setMovies(List<Movie> movies) {
+        this.movies = movies;
     }
 }

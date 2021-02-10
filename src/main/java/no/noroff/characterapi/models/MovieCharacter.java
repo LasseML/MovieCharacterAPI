@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@Table(name="movie_character")
 public class MovieCharacter {
 
     @Id
@@ -23,9 +24,13 @@ public class MovieCharacter {
     @Column(name = "picture")
     private String picture;
 
-    //when movie is created
-    //ManyToMany
-    //private List<Movie> movies;
+    @ManyToMany
+    @JoinTable(
+            name = "movie_moviecharacter",
+            joinColumns = {@JoinColumn(name = "movie_character_id")},
+            inverseJoinColumns = {@JoinColumn(name = "movie_id")}
+    )
+    private List<Movie> movies;
 
     //when franchise is created
     //ManyToMany

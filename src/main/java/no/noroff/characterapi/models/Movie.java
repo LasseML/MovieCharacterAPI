@@ -11,5 +11,5 @@ public class Movie {
     private String director;
     private String picture;
     private String trailer;
-    List<Character> characters;
+    List<MovieCharacter> movieCharacters;
 }

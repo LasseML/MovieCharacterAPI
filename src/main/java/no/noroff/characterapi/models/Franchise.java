@@ -7,5 +7,5 @@ public class Franchise {
     private String name;
     private String description;
     List<Movie> movies;
-    List<Character> characters;
+    List<MovieCharacter> movieCharacters;
 }

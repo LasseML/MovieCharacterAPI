@@ -2,7 +2,7 @@ package no.noroff.characterapi.models;
 
 import java.util.List;
 
-public class Character {
+public class MovieCharacter {
     private long id;
     private String fullName;
     private String alias;

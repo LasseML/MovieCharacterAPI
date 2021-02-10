@@ -1,16 +1,35 @@
 package no.noroff.characterapi.models;
 
+import javax.persistence.*;
 import java.util.List;
 
+@Entity
 public class MovieCharacter {
-    private long id;
-    private String fullName;
-    private String alias;
-    //Type TBD
-    private String gender;
-    private String picture;
-    private List<Movie> movies;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+
+    @Column(name = "first_name")
+    private String firstName;
+    @Column(name = "last_name")
+    private String lastName;
+    @Column(name = "alias")
+    private String alias;
+
+    //Type TBD
+    @Column(name = "gender")
+    private String gender;
+    @Column(name = "picture")
+    private String picture;
+
+    //when movie is created
+    //ManyToMany
+    //private List<Movie> movies;
+
+    //when franchise is created
+    //ManyToMany
+    //private List<Franchise> Franchises;
 
     public long getId() {
         return id;
@@ -20,12 +39,20 @@ public class MovieCharacter {
         this.id = id;
     }
 
-    public String getFullName() {
-        return fullName;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getAlias() {
@@ -52,11 +79,8 @@ public class MovieCharacter {
         this.picture = picture;
     }
 
-    public List<Movie> getMovies() {
-        return movies;
-    }
-
-    public void setMovies(List<Movie> movies) {
-        this.movies = movies;
-    }
 }
+
+
+
+

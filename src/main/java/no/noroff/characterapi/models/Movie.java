@@ -87,4 +87,20 @@ public class Movie {
     public void setTrailer(String trailer) {
         this.trailer = trailer;
     }
+
+    public Franchise getFranchise() {
+        return franchise;
+    }
+
+    public void setFranchise(Franchise franchise) {
+        this.franchise = franchise;
+    }
+
+    public List<MovieCharacter> getMovieCharacters() {
+        return movieCharacters;
+    }
+
+    public void setMovieCharacters(List<MovieCharacter> movieCharacters) {
+        this.movieCharacters = movieCharacters;
+    }
 }

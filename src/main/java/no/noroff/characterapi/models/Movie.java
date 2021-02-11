@@ -1,10 +1,12 @@
 package no.noroff.characterapi.models;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
+import no.noroff.characterapi.controllers.ApiConstants;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Entity
 public class Movie {
@@ -29,8 +31,28 @@ public class Movie {
     @JoinColumn(name = "franchise_id")
     private Franchise franchise;
 
+    @JsonGetter("franchise")
+    public String franchise() {
+        if(franchise != null){
+            return "/api/v1/franchise/" + franchise.getId();
+        }else{
+            return null;
+        }
+    }
+
     @ManyToMany(mappedBy = "movies")
     private List<MovieCharacter> movieCharacters;
+
+    @JsonGetter("movieCharacters")
+    public List<String> movieCharactersGetter() {
+        if(movieCharacters != null){
+            return movieCharacters.stream()
+                    .map(movieCharacter -> {
+                        return ApiConstants.CHARACTER_PATH +"/"+ movieCharacter.getId();
+                    }).collect(Collectors.toList());
+        }
+        return null;
+    }
 
     public void setId(Long id) {
         this.id = id;

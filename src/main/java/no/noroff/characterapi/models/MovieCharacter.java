@@ -95,6 +95,10 @@ public class MovieCharacter {
         this.picture = picture;
     }
 
+    public void setMovies(List<Movie> movies) {
+        this.movies = movies;
+    }
+
 }
 
 

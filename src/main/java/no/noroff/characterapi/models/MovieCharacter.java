@@ -1,7 +1,11 @@
 package no.noroff.characterapi.models;
 
+import com.fasterxml.jackson.annotation.JsonGetter;
+import no.noroff.characterapi.controllers.ApiConstants;
+
 import javax.persistence.*;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Entity
 @Table(name="movie_character")
@@ -31,6 +35,17 @@ public class MovieCharacter {
             inverseJoinColumns = {@JoinColumn(name = "movie_id")}
     )
     private List<Movie> movies;
+
+    @JsonGetter("movies")
+    public List<String> moviesGetter() {
+        if(movies != null){
+            return movies.stream()
+                    .map(movie -> {
+                        return ApiConstants.MOVIE_PATH +"/"+ movie.getId();
+                    }).collect(Collectors.toList());
+        }
+        return null;
+    }
 
     public long getId() {
         return id;

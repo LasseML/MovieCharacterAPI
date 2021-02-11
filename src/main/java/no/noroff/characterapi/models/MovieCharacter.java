@@ -18,9 +18,9 @@ public class MovieCharacter {
     @Column(name = "alias")
     private String alias;
 
-    //Type TBD
+    @Enumerated(EnumType.STRING)
     @Column(name = "gender")
-    private String gender;
+    private Gender gender;
     @Column(name = "picture")
     private String picture;
 
@@ -31,10 +31,6 @@ public class MovieCharacter {
             inverseJoinColumns = {@JoinColumn(name = "movie_id")}
     )
     private List<Movie> movies;
-
-    //when franchise is created
-    //ManyToMany
-    //private List<Franchise> Franchises;
 
     public long getId() {
         return id;
@@ -68,11 +64,11 @@ public class MovieCharacter {
         this.alias = alias;
     }
 
-    public String getGender() {
+    public Gender getGender() {
         return gender;
     }
 
-    public void setGender(String gender) {
+    public void setGender(Gender gender) {
         this.gender = gender;
     }
 

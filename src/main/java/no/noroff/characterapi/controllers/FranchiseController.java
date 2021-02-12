@@ -17,62 +17,32 @@ import java.util.List;
 @RequestMapping(ApiConstants.FRANCHISE_PATH)
 @RestController
 public class FranchiseController {
+    Logger logger = LoggerFactory.getLogger(FranchiseController.class);
+
     @Autowired
     private FranchiseRepository franchiseRepository;
 
-    private final Logger logger = LoggerFactory.getLogger(FranchiseController.class);
-
-
-    /*
-        GET
-    */
-
-    @GetMapping
+    @GetMapping()
     public ResponseEntity<List<Franchise>> getAllFranchises() {
-        logger.info("Received GET ALL");
         return ResponseEntity.ok(franchiseRepository.findAll());
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Franchise> getFranchise(@PathVariable long id) {
-        logger.info("Received GET with id: " + id);
-        if (franchiseRepository.findById(id).isPresent()) {
-            logger.info("Franchise found");
-            return ResponseEntity.ok(franchiseRepository.findById(id).get());
-        }
-        logger.info("Franchise not found");
-        return ResponseEntity.notFound().build();
+        return ResponseEntity.of(franchiseRepository.findById(id));
     }
 
-    /*
-        POST
-    */
-
-    @PostMapping
+    @PostMapping()
     public ResponseEntity<Franchise> addFranchise(@RequestBody Franchise franchise) {
-        logger.info("Received POST request");
-        Franchise newFranchise = franchiseRepository.save(franchise);
-
-        return ResponseEntity.status(HttpStatus.CREATED).body(newFranchise);
+        return new ResponseEntity<>(franchiseRepository.save(franchise), HttpStatus.CREATED);
     }
-
-    /*
-        PUT
-    */
 
     @PutMapping("/{id}")
     public ResponseEntity<Franchise> updateFranchise(@PathVariable long id, @RequestBody Franchise franchise) {
-        logger.info("Received PUT with id: " + id);
-        franchise.setId(id);
-        franchise = franchiseRepository.save(franchise);
-
-        return ResponseEntity.ok(franchise);
+        if (id == franchise.getId() && franchiseRepository.existsById(id))
+            return ResponseEntity.ok(franchiseRepository.save(franchise));
+        return new ResponseEntity<>(new Franchise(), HttpStatus.BAD_REQUEST);
     }
-
-
-    /*
-        Exception Handling
-    */
 
     @ExceptionHandler(IllegalArgumentException.class)
     @ResponseStatus( HttpStatus.BAD_REQUEST )

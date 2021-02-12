@@ -72,5 +72,20 @@ public class MovieController {
         List<MovieCharacter> characters = movieCharacterRepository.findAll();
         return new ResponseEntity<>(characters, status);
     }
-
+    
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Movie> deleteMovie(@PathVariable long id) {
+        HttpStatus status = null;
+        try {
+            if (movieRepository.existsById(id)) {
+                Movie movie = movieRepository.getOne(id);
+                movie.setDeleted();
+                movieRepository.save(movie);
+                status = HttpStatus.NO_CONTENT;
+            }
+        } catch (Exception e) {
+            status = HttpStatus.INTERNAL_SERVER_ERROR;
+        }
+        return new ResponseEntity<>(status);
+    }
 }

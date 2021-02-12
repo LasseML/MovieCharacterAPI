@@ -2,6 +2,7 @@ package no.noroff.characterapi.models;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
 import no.noroff.characterapi.controllers.ApiConstants;
+import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 import java.sql.Date;
@@ -9,6 +10,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Entity
+@Where(clause = "DELETED = 0")
 public class Movie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,6 +28,8 @@ public class Movie {
     private String picture;
     @Column(name = "trailer")
     private String trailer;
+    @Column(name = "DELETED")
+    private Integer deleted = 0;
 
     @ManyToOne
     @JoinColumn(name = "franchise_id")
@@ -124,5 +128,13 @@ public class Movie {
 
     public void setMovieCharacters(List<MovieCharacter> movieCharacters) {
         this.movieCharacters = movieCharacters;
+    }
+
+    public Integer getDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted() {
+        this.deleted = 1;
     }
 }

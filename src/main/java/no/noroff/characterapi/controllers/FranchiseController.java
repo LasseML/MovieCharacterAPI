@@ -65,7 +65,6 @@ public class FranchiseController {
             return ResponseEntity.noContent().build();
         }
         return ResponseEntity.badRequest().build();
-
     }
 
     //Return all movie characters in a franchise

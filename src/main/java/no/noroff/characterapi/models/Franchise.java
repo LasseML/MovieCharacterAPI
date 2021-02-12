@@ -3,6 +3,7 @@ package no.noroff.characterapi.models;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
 import no.noroff.characterapi.controllers.ApiConstants;
+import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -11,6 +12,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Entity
+@Where(clause = "deleted = 0")
 @Table(name="franchise")
 public class Franchise {
     @Id
@@ -23,6 +25,8 @@ public class Franchise {
 
     @Column(name = "description")
     private String description;
+
+    private int deleted = 0;
 
     @OneToMany
     @JoinColumn(name="franchise_id")
@@ -40,6 +44,14 @@ public class Franchise {
                     .map(movie -> ApiConstants.MOVIE_PATH +"/"+ movie.getId()).collect(Collectors.toList());
         }
         return new ArrayList<>();
+    }
+
+    public int getDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted() {
+        this.deleted = 1;
     }
 
     public Long getId() {

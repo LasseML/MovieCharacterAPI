@@ -44,6 +44,17 @@ public class FranchiseController {
         return new ResponseEntity<>(new Franchise(), HttpStatus.BAD_REQUEST);
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Franchise> deleteFranchise(@PathVariable long id) {
+        if (franchiseRepository.existsById(id)) {
+            Franchise franchise = franchiseRepository.getOne(id);
+            franchise.setDeleted();
+            franchiseRepository.save(franchise);
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.badRequest().build();
+
+    }
     @ExceptionHandler(IllegalArgumentException.class)
     @ResponseStatus( HttpStatus.BAD_REQUEST )
     public void IllegalArgumentHandler(HttpServletRequest req, Exception ex) {

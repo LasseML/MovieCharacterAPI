@@ -170,6 +170,26 @@ paths:
         responses:
           '204':
             description: Franchise deleted successfully
+  /movie/{id}/characters:
+      get:
+        description: Get the movie characters in a movie
+        produces:
+          - application/json
+        parameters:
+          - name: "id"
+            in: "path"
+            description: "ID of movie to return"
+            required: true
+            type: "integer"
+        responses:
+          '200':
+            description: The movie with the given id.
+            schema:
+              type: "array"
+              items:
+                $ref: '#/definitions/MovieCharacter'
+          '404':
+            description: No movie with the given id
   /character:
       get:
         description: Get all movie characters

@@ -2,7 +2,6 @@ package no.noroff.characterapi.controllers;
 
 import no.noroff.characterapi.models.Movie;
 import no.noroff.characterapi.models.MovieCharacter;
-import no.noroff.characterapi.repositories.MovieCharacterRepository;
 import no.noroff.characterapi.repositories.MovieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,9 +16,6 @@ public class MovieController {
 
     @Autowired
     private MovieRepository movieRepository;
-
-    @Autowired
-    private MovieCharacterRepository movieCharacterRepository;
 
     //Return all movies
     @GetMapping()
@@ -84,17 +80,16 @@ public class MovieController {
     //Soft deletes a movie character
     @DeleteMapping("/{id}")
     public ResponseEntity<Movie> deleteMovie(@PathVariable long id) {
-        HttpStatus status = null;
-        try {
-            if (movieRepository.existsById(id)) {
-                Movie movie = movieRepository.getOne(id);
-                movie.setDeleted();
-                movieRepository.save(movie);
-                status = HttpStatus.NO_CONTENT;
-            }
-        } catch (Exception e) {
-            status = HttpStatus.INTERNAL_SERVER_ERROR;
+        HttpStatus status;
+        if (!movieRepository.existsById(id)) {
+            status = HttpStatus.BAD_REQUEST;
+            return new ResponseEntity<>(status);
         }
+        Movie movie = movieRepository.getOne(id);
+        movie.setDeleted();
+        movieRepository.save(movie);
+        status = HttpStatus.NO_CONTENT;
+
         return new ResponseEntity<>(status);
     }
 }

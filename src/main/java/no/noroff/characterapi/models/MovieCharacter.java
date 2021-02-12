@@ -2,12 +2,14 @@ package no.noroff.characterapi.models;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
 import no.noroff.characterapi.controllers.ApiConstants;
+import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Entity
+@Where(clause = "DELETED = 0")
 @Table(name="movie_character")
 public class MovieCharacter {
 
@@ -27,6 +29,9 @@ public class MovieCharacter {
     private Gender gender;
     @Column(name = "picture")
     private String picture;
+
+    @Column(name = "DELETED")
+    private Integer deleted = 0;
 
     @ManyToMany
     @JoinTable(
@@ -98,6 +103,8 @@ public class MovieCharacter {
     public void setMovies(List<Movie> movies) {
         this.movies = movies;
     }
+
+    public void setDeleted() { this.deleted = 1; }
 
 }
 

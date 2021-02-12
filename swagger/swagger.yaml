@@ -235,7 +235,7 @@ paths:
           '200':
             description: A list of movie characters.
             schema:
-              type: array
+              type: 'array'
               items:
                 $ref: '#/definitions/ReturnMovieCharacter'
       post:

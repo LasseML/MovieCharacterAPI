@@ -44,7 +44,12 @@ public class Movie {
         }
     }
 
-    @ManyToMany(mappedBy = "movies")
+    @ManyToMany
+    @JoinTable(
+            name = "movie_moviecharacter",
+            joinColumns = {@JoinColumn(name = "movie_id")},
+            inverseJoinColumns = {@JoinColumn(name = "movie_character_id")}
+    )
     private List<MovieCharacter> movieCharacters;
 
     @JsonGetter("movieCharacters")

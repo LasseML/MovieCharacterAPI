@@ -407,7 +407,10 @@ definitions:
       trailer:
         type: "string"
       franchise:
-        type: "string"
+        type: "object"
+        properties:
+          id:
+            type: integer
       movieCharacters:
         type: "array"
         items:

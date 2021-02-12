@@ -15,7 +15,9 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import javax.servlet.http.HttpServletRequest;
 import java.net.URI;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @RequestMapping(ApiConstants.FRANCHISE_PATH)
@@ -61,9 +63,9 @@ public class FranchiseController {
     }
 
     @GetMapping("/{id}/characters")
-    public ResponseEntity<List<MovieCharacter>> getFranchiseCharacters(@PathVariable long id) {
+    public ResponseEntity<Set<MovieCharacter>> getFranchiseCharacters(@PathVariable long id) {
         if (franchiseRepository.existsById(id)) {
-            List<MovieCharacter> characters = new ArrayList<>();
+            Set<MovieCharacter> characters = new HashSet<>();
             Franchise franchise = franchiseRepository.getOne(id);
 
             for (Movie movie: franchise.getMovies())

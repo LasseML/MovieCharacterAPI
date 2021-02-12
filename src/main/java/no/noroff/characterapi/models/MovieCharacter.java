@@ -1,6 +1,7 @@
 package no.noroff.characterapi.models;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import no.noroff.characterapi.controllers.ApiConstants;
 import org.hibernate.annotations.Where;
 
@@ -30,6 +31,7 @@ public class MovieCharacter {
     @Column(name = "picture")
     private String picture;
 
+    @JsonIgnore
     @Column(name = "DELETED")
     private Integer deleted = 0;
 

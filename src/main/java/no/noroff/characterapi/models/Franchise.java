@@ -2,6 +2,7 @@ package no.noroff.characterapi.models;
 
 
 import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import no.noroff.characterapi.controllers.ApiConstants;
 import org.hibernate.annotations.Where;
 
@@ -26,6 +27,7 @@ public class Franchise {
     @Column(name = "description")
     private String description;
 
+    @JsonIgnore
     private int deleted = 0;
 
     @OneToMany

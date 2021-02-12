@@ -10,15 +10,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.servlet.http.HttpServletRequest;
-import java.net.URI;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
+
 
 @RequestMapping(ApiConstants.FRANCHISE_PATH)
 @RestController
@@ -28,30 +25,37 @@ public class FranchiseController {
     @Autowired
     private FranchiseRepository franchiseRepository;
 
+    //Return all franchises
     @GetMapping()
     public ResponseEntity<List<Franchise>> getAllFranchises() {
         return ResponseEntity.ok(franchiseRepository.findAll());
     }
 
+    //Return a specific franchise
+    //Let ResponseEntity.of() handle the Optional and return the correct status code
     @GetMapping("/{id}")
     public ResponseEntity<Franchise> getFranchise(@PathVariable long id) {
         return ResponseEntity.of(franchiseRepository.findById(id));
     }
 
+    //Add a franchise to the DB
     @PostMapping()
     public ResponseEntity<Franchise> addFranchise(@RequestBody Franchise franchise) {
         return new ResponseEntity<>(franchiseRepository.save(franchise), HttpStatus.CREATED);
     }
 
+    //Update a franchise
+    //Check that IDs match
     @PutMapping("/{id}")
     public ResponseEntity<Franchise> updateFranchise(@PathVariable long id, @RequestBody Franchise franchise) {
-        if (id == franchise.getId() && franchiseRepository.existsById(id)) {
+        if (id == franchise.getId()) {
             franchiseRepository.save(franchise);
             return ResponseEntity.noContent().build();
         }
         return ResponseEntity.badRequest().build();
     }
 
+    //Soft delete a franchise
     @DeleteMapping("/{id}")
     public ResponseEntity<Franchise> deleteFranchise(@PathVariable long id) {
         if (franchiseRepository.existsById(id)) {
@@ -64,6 +68,7 @@ public class FranchiseController {
 
     }
 
+    //Return all movie characters in a franchise
     @GetMapping("/{id}/characters")
     public ResponseEntity<Set<MovieCharacter>> getFranchiseCharacters(@PathVariable long id) {
         if (franchiseRepository.existsById(id)) {
@@ -78,6 +83,7 @@ public class FranchiseController {
         return ResponseEntity.notFound().build();
     }
 
+    //Return all movies in a franchise
     @GetMapping("/{id}/movies")
     public ResponseEntity<List<Movie>> getFranchiseMovies(@PathVariable long id) {
         if (franchiseRepository.existsById(id)) {
@@ -87,13 +93,10 @@ public class FranchiseController {
         return ResponseEntity.notFound().build();
     }
 
-
-
     @ExceptionHandler(IllegalArgumentException.class)
     @ResponseStatus( HttpStatus.BAD_REQUEST )
     public void IllegalArgumentHandler(HttpServletRequest req, Exception ex) {
         logger.info("Invalid request received: " + req.getRequestURI());
         logger.info("Invalid request received: " + req.getMethod());
     }
-
 }

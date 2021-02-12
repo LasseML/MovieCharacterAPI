@@ -1,6 +1,5 @@
 package no.noroff.characterapi.models;
 
-
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import no.noroff.characterapi.controllers.ApiConstants;
@@ -13,14 +12,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Entity
-@Where(clause = "deleted = 0")
+@Where(clause = "deleted = 0") //Use soft delete
 @Table(name="franchise")
 public class Franchise {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull //hibernate infers @Column(nullable = false) from this
+    @NotNull
     @Column(name = "name")
     private String name;
 
@@ -33,11 +32,6 @@ public class Franchise {
     @OneToMany
     @JoinColumn(name="franchise_id")
     List<Movie> movies;
-
-    //I think this can be done without a formal relation
-    //Not implementing for now
-    //List<MovieCharacter> movieCharacters;
-
 
     @JsonGetter("movies")
     public List<String> moviesGetter() {

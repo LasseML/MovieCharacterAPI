@@ -14,7 +14,7 @@ Commands used to deploy:
 heroku login
 heroku create norcharapi --region eu
 heroku container:login
-heroku container:push web --app nitunes
+heroku container:push web --app norcharapi
 heroku container:release -a norcharapi web
 ```
 

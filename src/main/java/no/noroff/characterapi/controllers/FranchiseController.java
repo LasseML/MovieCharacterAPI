@@ -1,6 +1,8 @@
 package no.noroff.characterapi.controllers;
 
 import no.noroff.characterapi.models.Franchise;
+import no.noroff.characterapi.models.Movie;
+import no.noroff.characterapi.models.MovieCharacter;
 import no.noroff.characterapi.repositories.FranchiseRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,7 +14,9 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.servlet.http.HttpServletRequest;
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RequestMapping(ApiConstants.FRANCHISE_PATH)
 @RestController
@@ -55,6 +59,21 @@ public class FranchiseController {
         return ResponseEntity.badRequest().build();
 
     }
+
+    @GetMapping("/{id}/characters")
+    public ResponseEntity<List<MovieCharacter>> getFranchiseCharacters(@PathVariable long id) {
+        if (franchiseRepository.existsById(id)) {
+            List<MovieCharacter> characters = new ArrayList<>();
+            Franchise franchise = franchiseRepository.getOne(id);
+
+            for (Movie movie: franchise.getMovies())
+                characters.addAll(movie.getMovieCharacters());
+
+            return ResponseEntity.ok(characters);
+        }
+        return ResponseEntity.notFound().build();
+    }
+
     @ExceptionHandler(IllegalArgumentException.class)
     @ResponseStatus( HttpStatus.BAD_REQUEST )
     public void IllegalArgumentHandler(HttpServletRequest req, Exception ex) {

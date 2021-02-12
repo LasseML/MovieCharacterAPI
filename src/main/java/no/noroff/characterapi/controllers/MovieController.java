@@ -21,6 +21,7 @@ public class MovieController {
     @Autowired
     private MovieCharacterRepository movieCharacterRepository;
 
+    //Return all movies
     @GetMapping()
     public ResponseEntity<List<Movie>> getAllMovies(){
         List<Movie> movies = movieRepository.findAll();
@@ -28,6 +29,7 @@ public class MovieController {
         return new ResponseEntity<>(movies,status);
     }
 
+    //Return one movie by id if provided id exists
     @GetMapping("/{id}")
     public ResponseEntity<Movie> getMovie(@PathVariable Long id) {
         Movie movie = new Movie();
@@ -41,6 +43,7 @@ public class MovieController {
         return new ResponseEntity<>(movie, status);
     }
 
+    //Add a new movie to the database
     @PostMapping
     public ResponseEntity<Movie> addMovie(@RequestBody Movie movie){
         Movie returnMovie = movieRepository.save(movie);
@@ -48,6 +51,8 @@ public class MovieController {
         return new ResponseEntity<>(returnMovie, status);
     }
 
+    //Check that IDs match
+    //If yes, update the movie
     @PutMapping("/{id}")
     public ResponseEntity<Movie> updateMovie(@PathVariable Long id, @RequestBody Movie movie){
         Movie returnMovie = new Movie();
@@ -61,6 +66,7 @@ public class MovieController {
         return new ResponseEntity<>(returnMovie, status);
     }
 
+    //Return all characters in a movie
     @GetMapping("/{id}/characters")
     public ResponseEntity<List<MovieCharacter>> getAllCharactersInMovie(@PathVariable Long id){
         HttpStatus status;
@@ -74,7 +80,8 @@ public class MovieController {
         }
         return new ResponseEntity<>(characters, status);
     }
-    
+
+    //Soft deletes a movie character
     @DeleteMapping("/{id}")
     public ResponseEntity<Movie> deleteMovie(@PathVariable long id) {
         HttpStatus status = null;

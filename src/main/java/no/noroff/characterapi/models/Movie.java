@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Entity
-@Where(clause = "DELETED = 0")
+@Where(clause = "DELETED = 0") //Use soft delete
 public class Movie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,10 +33,12 @@ public class Movie {
     @Column(name = "DELETED")
     private Integer deleted = 0;
 
+    //Create one to many relationship with franchise
     @ManyToOne
     @JoinColumn(name = "franchise_id")
     private Franchise franchise;
 
+    //Return franchise as a link
     @JsonGetter("franchise")
     public String franchise() {
         if(franchise != null){
@@ -46,6 +48,7 @@ public class Movie {
         }
     }
 
+    //Create a many to many relationship with movie characters
     @ManyToMany
     @JoinTable(
             name = "movie_moviecharacter",
@@ -54,6 +57,7 @@ public class Movie {
     )
     private List<MovieCharacter> movieCharacters;
 
+    //Return movie characters as list of links
     @JsonGetter("movieCharacters")
     public List<String> movieCharactersGetter() {
         if(movieCharacters != null){

@@ -329,11 +329,11 @@ definitions:
         type: "string"
       movies:
         type: "array"
-    items:
-      type: "object"
-      properties:
-        id:
-          type: integer
+        items:
+          type: "object"
+          properties:
+            id:
+              type: integer
   ReturnMovie:
     type: "object"
     properties:

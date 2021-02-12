@@ -1,0 +1,1347 @@
+{
+	"info": {
+		"_postman_id": "13caf4d6-f525-4f3a-bd60-dc0d453316aa",
+		"name": "Movie Character API",
+		"description": "Movie Character API description",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "franchise",
+			"item": [
+				{
+					"name": "{id}",
+					"item": [
+						{
+							"name": "/franchise/:id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/franchise/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"franchise",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "68820388",
+											"description": "(Required) ID of Franchise to return"
+										}
+									]
+								},
+								"description": "Get the Franchise with the given id"
+							},
+							"response": [
+								{
+									"name": "The Franchise with the given id.",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/franchise/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"franchise",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"id\": 62508835,\n \"name\": \"qui tempor Lorem fugiat\",\n \"description\": \"nisi ullamco fugiat ipsum minim\",\n \"movies\": [\n  \"irure sit in Excepteur\",\n  \"quis non aliq\"\n ]\n}"
+								},
+								{
+									"name": "No franchise with the given id.",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/franchise/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"franchise",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "/franchise/:id",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"laborum minim \",\n    \"description\": \"voluptate ipsum ad sit commodo\",\n    \"movies\": [\n        {\n            \"id\": 69884384\n        },\n        {\n            \"id\": -78406479\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/franchise/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"franchise",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "68820388",
+											"description": "(Required) ID of Franchise to update"
+										}
+									]
+								},
+								"description": "Update the Franchise with the given id."
+							},
+							"response": [
+								{
+									"name": "object updated",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"name\": \"laborum minim \",\n    \"description\": \"voluptate ipsum ad sit commodo\",\n    \"movies\": [\n        {\n            \"id\": 69884384\n        },\n        {\n            \"id\": -78406479\n        }\n    ]\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/franchise/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"franchise",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "No Content",
+									"code": 204,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "/franchise/:id",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/franchise/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"franchise",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "68820388",
+											"description": "(Required) ID of Franchise to delete"
+										}
+									]
+								},
+								"description": "Delete the Franchise with the given id."
+							},
+							"response": [
+								{
+									"name": "Franchise deleted successfully",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/franchise/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"franchise",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "No Content",
+									"code": 204,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "/franchise/:id/characters",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/franchise/:id/characters",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"franchise",
+										":id",
+										"characters"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "68820388",
+											"description": "(Required) ID of Franchise to return"
+										}
+									]
+								},
+								"description": "Get all characters in the given franchise"
+							},
+							"response": [
+								{
+									"name": "No franchise with the given id.",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/franchise/:id/characters",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"franchise",
+												":id",
+												"characters"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "The Franchise with the given id.",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/franchise/:id/characters",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"franchise",
+												":id",
+												"characters"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "[\n {\n  \"id\": -18546901,\n  \"firstName\": \"proident fugiat\",\n  \"lastName\": \"incididunt\",\n  \"alias\": \"Excepteur tempor quis et\",\n  \"gender\": \"OTHER\",\n  \"picture\": \"aliqua in Ut\",\n  \"movies\": [\n   \"in nulla aliquip\",\n   \"Duis\"\n  ]\n },\n {\n  \"id\": -10675850,\n  \"firstName\": \"cupidatat id dolore velit\",\n  \"lastName\": \"ipsum nulla est\",\n  \"alias\": \"labore laborum\",\n  \"gender\": \"FEMALE\",\n  \"picture\": \"dolore proident\",\n  \"movies\": [\n   \"nostrud sed reprehenderit \",\n   \"nisi id in nostrud exerc\"\n  ]\n }\n]"
+								}
+							]
+						},
+						{
+							"name": "/franchise/:id/movies",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/franchise/:id/movies",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"franchise",
+										":id",
+										"movies"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "68820388",
+											"description": "(Required) ID of franchise to return"
+										}
+									]
+								},
+								"description": "Get all movies in the given franchise"
+							},
+							"response": [
+								{
+									"name": "The Franchise with the given id.",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/franchise/:id/movies",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"franchise",
+												":id",
+												"movies"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "[\n {\n  \"id\": -20917947,\n  \"title\": \"irure ut aute fugiat nostrud\",\n  \"genre\": \"commodo aliqua nostrud ad\",\n  \"release\": \"2016-07-01\",\n  \"director\": \"ea in laboris \",\n  \"picture\": \"quis sit\",\n  \"trailer\": \"laborum aliquip qui\",\n  \"franchise\": \"in\",\n  \"movieCharacters\": [\n   \"cupidatat\",\n   \"eiusmod dolor enim ex\"\n  ]\n },\n {\n  \"id\": 18237799,\n  \"title\": \"sed ipsum\",\n  \"genre\": \"et\",\n  \"release\": \"2001-06-10\",\n  \"director\": \"eu ex do\",\n  \"picture\": \"qui dolore\",\n  \"trailer\": \"ipsum mollit occaecat aliqua\",\n  \"franchise\": \"id cillum proident amet\",\n  \"movieCharacters\": [\n   \"pariatur dolore\",\n   \"sint non laboris pariatur\"\n  ]\n }\n]"
+								},
+								{
+									"name": "No franchise with the given id.",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/franchise/:id/movies",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"franchise",
+												":id",
+												"movies"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "/franchise",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/franchise",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"franchise"
+							]
+						},
+						"description": "Get all franchises"
+					},
+					"response": [
+						{
+							"name": "A list of franchises",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/franchise",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"franchise"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "[\n {\n  \"id\": -58935179,\n  \"name\": \"laborum m\",\n  \"description\": \"et officia laborum enim\",\n  \"movies\": [\n   \"Duis proiden\",\n   \"aute aliqua exercitation in laboris\"\n  ]\n },\n {\n  \"id\": 1126881,\n  \"name\": \"ad proident tempor minim\",\n  \"description\": \"minim\",\n  \"movies\": [\n   \"enim incididunt culpa\",\n   \"tempor dolore p\"\n  ]\n }\n]"
+						}
+					]
+				},
+				{
+					"name": "/franchise",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"vel\",\n    \"description\": \"magna velit\",\n    \"movies\": [\n        {\n            \"id\": -30137441\n        },\n        {\n            \"id\": 90183162\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/franchise",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"franchise"
+							]
+						},
+						"description": "Add a franchise."
+					},
+					"response": [
+						{
+							"name": "The new franchise",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"laborum minim \",\n    \"description\": \"voluptate ipsum ad sit commodo\",\n    \"movies\": [\n        {\n            \"id\": 69884384\n        },\n        {\n            \"id\": -78406479\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/franchise",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"franchise"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"id\": 62508835,\n \"name\": \"qui tempor Lorem fugiat\",\n \"description\": \"nisi ullamco fugiat ipsum minim\",\n \"movies\": [\n  \"irure sit in Excepteur\",\n  \"quis non aliq\"\n ]\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "movie",
+			"item": [
+				{
+					"name": "{id}",
+					"item": [
+						{
+							"name": "/movie/:id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/movie/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"movie",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "68820388",
+											"description": "(Required) ID of movie to return"
+										}
+									]
+								},
+								"description": "Get the movie with the given id"
+							},
+							"response": [
+								{
+									"name": "The movie with the given id.",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/movie/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"movie",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"id\": -72402460,\n \"title\": \"in dolore in id\",\n \"genre\": \"adipisicing tempor do\",\n \"release\": \"1978-09-12\",\n \"director\": \"pariatur anim non enim irure\",\n \"picture\": \"fugiat aute\",\n \"trailer\": \"tempor reprehenderit nostrud id\",\n \"franchise\": \"et ex\",\n \"movieCharacters\": [\n  \"officia nisi dolore incididunt veniam\",\n  \"ut proident\"\n ]\n}"
+								},
+								{
+									"name": "No movie with the given id",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/movie/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"movie",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "/movie/:id",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\": \"tempor consequat anim ulla\",\n    \"genre\": \"commodo aute irure ad\",\n    \"release\": \"1946-11-22\",\n    \"director\": \"Excepteur\",\n    \"picture\": \"enim in\",\n    \"trailer\": \"est ut magna incididunt\",\n    \"franchise\": {\n        \"id\": -99167796\n    },\n    \"movieCharacters\": [\n        {\n            \"id\": -52542437\n        },\n        {\n            \"id\": -53010496\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/movie/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"movie",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "68820388",
+											"description": "(Required) ID of movie to update"
+										}
+									]
+								},
+								"description": "Update the movie with the given id."
+							},
+							"response": [
+								{
+									"name": "object updated",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"title\": \"tempor consequat anim ulla\",\n    \"genre\": \"commodo aute irure ad\",\n    \"release\": \"1946-11-22\",\n    \"director\": \"Excepteur\",\n    \"picture\": \"enim in\",\n    \"trailer\": \"est ut magna incididunt\",\n    \"franchise\": {\n        \"id\": -99167796\n    },\n    \"movieCharacters\": [\n        {\n            \"id\": -52542437\n        },\n        {\n            \"id\": -53010496\n        }\n    ]\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/movie/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"movie",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "No Content",
+									"code": 204,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "/movie/:id",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/movie/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"movie",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "68820388",
+											"description": "(Required) ID of Movie to delete"
+										}
+									]
+								},
+								"description": "Delete the Movie with the given id."
+							},
+							"response": [
+								{
+									"name": "Franchise deleted successfully",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/movie/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"movie",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "No Content",
+									"code": 204,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "/movie/:id/characters",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/movie/:id/characters",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"movie",
+										":id",
+										"characters"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "68820388",
+											"description": "(Required) ID of movie to return"
+										}
+									]
+								},
+								"description": "Get the movie characters in a movie"
+							},
+							"response": [
+								{
+									"name": "No movie with the given id",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/movie/:id/characters",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"movie",
+												":id",
+												"characters"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "The movie with the given id.",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/movie/:id/characters",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"movie",
+												":id",
+												"characters"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "[\n {\n  \"id\": -18546901,\n  \"firstName\": \"proident fugiat\",\n  \"lastName\": \"incididunt\",\n  \"alias\": \"Excepteur tempor quis et\",\n  \"gender\": \"OTHER\",\n  \"picture\": \"aliqua in Ut\",\n  \"movies\": [\n   \"in nulla aliquip\",\n   \"Duis\"\n  ]\n },\n {\n  \"id\": -10675850,\n  \"firstName\": \"cupidatat id dolore velit\",\n  \"lastName\": \"ipsum nulla est\",\n  \"alias\": \"labore laborum\",\n  \"gender\": \"FEMALE\",\n  \"picture\": \"dolore proident\",\n  \"movies\": [\n   \"nostrud sed reprehenderit \",\n   \"nisi id in nostrud exerc\"\n  ]\n }\n]"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "/movie",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/movie",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"movie"
+							]
+						},
+						"description": "Get all movies"
+					},
+					"response": [
+						{
+							"name": "A list of movies",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/movie",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"movie"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "[\n {\n  \"id\": -20917947,\n  \"title\": \"irure ut aute fugiat nostrud\",\n  \"genre\": \"commodo aliqua nostrud ad\",\n  \"release\": \"2016-07-01\",\n  \"director\": \"ea in laboris \",\n  \"picture\": \"quis sit\",\n  \"trailer\": \"laborum aliquip qui\",\n  \"franchise\": \"in\",\n  \"movieCharacters\": [\n   \"cupidatat\",\n   \"eiusmod dolor enim ex\"\n  ]\n },\n {\n  \"id\": 18237799,\n  \"title\": \"sed ipsum\",\n  \"genre\": \"et\",\n  \"release\": \"2001-06-10\",\n  \"director\": \"eu ex do\",\n  \"picture\": \"qui dolore\",\n  \"trailer\": \"ipsum mollit occaecat aliqua\",\n  \"franchise\": \"id cillum proident amet\",\n  \"movieCharacters\": [\n   \"pariatur dolore\",\n   \"sint non laboris pariatur\"\n  ]\n }\n]"
+						}
+					]
+				},
+				{
+					"name": "/movie",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"tempor ea consequat ad\",\n    \"genre\": \"in consequat dolore deserunt eu\",\n    \"release\": \"1988-09-30\",\n    \"director\": \"anim id proident\",\n    \"picture\": \"sed irure Ut\",\n    \"trailer\": \"mollit ut irure\",\n    \"franchise\": {\n        \"id\": 39643354\n    },\n    \"movieCharacters\": [\n        {\n            \"id\": -89876049\n        },\n        {\n            \"id\": -89266484\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/movie",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"movie"
+							]
+						},
+						"description": "Add a movie."
+					},
+					"response": [
+						{
+							"name": "The new movie",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\": \"tempor consequat anim ulla\",\n    \"genre\": \"commodo aute irure ad\",\n    \"release\": \"1946-11-22\",\n    \"director\": \"Excepteur\",\n    \"picture\": \"enim in\",\n    \"trailer\": \"est ut magna incididunt\",\n    \"franchise\": {\n        \"id\": -99167796\n    },\n    \"movieCharacters\": [\n        {\n            \"id\": -52542437\n        },\n        {\n            \"id\": -53010496\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/movie",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"movie"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"id\": -72402460,\n \"title\": \"in dolore in id\",\n \"genre\": \"adipisicing tempor do\",\n \"release\": \"1978-09-12\",\n \"director\": \"pariatur anim non enim irure\",\n \"picture\": \"fugiat aute\",\n \"trailer\": \"tempor reprehenderit nostrud id\",\n \"franchise\": \"et ex\",\n \"movieCharacters\": [\n  \"officia nisi dolore incididunt veniam\",\n  \"ut proident\"\n ]\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "character",
+			"item": [
+				{
+					"name": "{id}",
+					"item": [
+						{
+							"name": "/character/:id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/character/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"character",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "68820388",
+											"description": "(Required) ID of movie character to return"
+										}
+									]
+								},
+								"description": "Returns the movie character with the given id"
+							},
+							"response": [
+								{
+									"name": "The movie character with the given id.",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/character/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"character",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"id\": -91582234,\n \"firstName\": \"ipsum\",\n \"lastName\": \"consequat in\",\n \"alias\": \"consectetur esse mollit\",\n \"gender\": \"OTHER\",\n \"picture\": \"in do nulla officia magna\",\n \"movies\": [\n  \"Excepteur fugiat\",\n  \"ea dolor elit Ut\"\n ]\n}"
+								},
+								{
+									"name": "No movie character with the given id.",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/character/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"character",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "/character/:id",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"firstName\": \"dolore aliquip mollit ullamco\",\n    \"lastName\": \"eiusmod\",\n    \"alias\": \"proident dolor incididunt\",\n    \"gender\": \"FEMALE\",\n    \"picture\": \"in ir\",\n    \"movies\": [\n        {\n            \"id\": 2218030\n        },\n        {\n            \"id\": -31065253\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/character/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"character",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "68820388",
+											"description": "(Required) ID of movie character to update"
+										}
+									]
+								},
+								"description": "Update the movie character with the given id."
+							},
+							"response": [
+								{
+									"name": "object updated",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"firstName\": \"dolore aliquip mollit ullamco\",\n    \"lastName\": \"eiusmod\",\n    \"alias\": \"proident dolor incididunt\",\n    \"gender\": \"FEMALE\",\n    \"picture\": \"in ir\",\n    \"movies\": [\n        {\n            \"id\": 2218030\n        },\n        {\n            \"id\": -31065253\n        }\n    ]\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/character/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"character",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "No Content",
+									"code": 204,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "/character/:id",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/character/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"character",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "68820388",
+											"description": "(Required) ID of Franchise to delete"
+										}
+									]
+								},
+								"description": "Delete the Movie Character with the given id."
+							},
+							"response": [
+								{
+									"name": "Franchise Movie Character deleted successfully",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/character/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"character",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "No Content",
+									"code": 204,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "/character",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/character",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"character"
+							]
+						},
+						"description": "Get all movie characters"
+					},
+					"response": [
+						{
+							"name": "A list of movie characters.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/character",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"character"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "[\n {\n  \"id\": -18546901,\n  \"firstName\": \"proident fugiat\",\n  \"lastName\": \"incididunt\",\n  \"alias\": \"Excepteur tempor quis et\",\n  \"gender\": \"OTHER\",\n  \"picture\": \"aliqua in Ut\",\n  \"movies\": [\n   \"in nulla aliquip\",\n   \"Duis\"\n  ]\n },\n {\n  \"id\": -10675850,\n  \"firstName\": \"cupidatat id dolore velit\",\n  \"lastName\": \"ipsum nulla est\",\n  \"alias\": \"labore laborum\",\n  \"gender\": \"FEMALE\",\n  \"picture\": \"dolore proident\",\n  \"movies\": [\n   \"nostrud sed reprehenderit \",\n   \"nisi id in nostrud exerc\"\n  ]\n }\n]"
+						}
+					]
+				},
+				{
+					"name": "/character",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"firstName\": \"nisi aliqua officia\",\n    \"lastName\": \"magna dolor aute\",\n    \"alias\": \"anim\",\n    \"gender\": \"FEMALE\",\n    \"picture\": \"tempor esse\",\n    \"movies\": [\n        {\n            \"id\": -35740482\n        },\n        {\n            \"id\": 41913306\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/character",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"character"
+							]
+						},
+						"description": "Add a movie character."
+					},
+					"response": [
+						{
+							"name": "The movie character with the given id.",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"firstName\": \"dolore aliquip mollit ullamco\",\n    \"lastName\": \"eiusmod\",\n    \"alias\": \"proident dolor incididunt\",\n    \"gender\": \"FEMALE\",\n    \"picture\": \"in ir\",\n    \"movies\": [\n        {\n            \"id\": 2218030\n        },\n        {\n            \"id\": -31065253\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/character",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"character"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"id\": -91582234,\n \"firstName\": \"ipsum\",\n \"lastName\": \"consequat in\",\n \"alias\": \"consectetur esse mollit\",\n \"gender\": \"OTHER\",\n \"picture\": \"in do nulla officia magna\",\n \"movies\": [\n  \"Excepteur fugiat\",\n  \"ea dolor elit Ut\"\n ]\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "localhost:8080/api/v1"
+		}
+	]
+}

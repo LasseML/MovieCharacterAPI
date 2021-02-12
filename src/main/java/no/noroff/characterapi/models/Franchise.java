@@ -1,9 +1,14 @@
 package no.noroff.characterapi.models;
 
 
+import com.fasterxml.jackson.annotation.JsonGetter;
+import no.noroff.characterapi.controllers.ApiConstants;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Entity
 @Table(name="franchise")
@@ -27,6 +32,15 @@ public class Franchise {
     //Not implementing for now
     //List<MovieCharacter> movieCharacters;
 
+
+    @JsonGetter("movies")
+    public List<String> moviesGetter() {
+        if(movies != null){
+            return movies.stream()
+                    .map(movie -> ApiConstants.MOVIE_PATH +"/"+ movie.getId()).collect(Collectors.toList());
+        }
+        return new ArrayList<>();
+    }
 
     public Long getId() {
         return id;

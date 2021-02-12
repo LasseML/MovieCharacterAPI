@@ -1,6 +1,5 @@
 package no.noroff.characterapi.controllers;
 
-import no.noroff.characterapi.models.Movie;
 import no.noroff.characterapi.models.MovieCharacter;
 import no.noroff.characterapi.repositories.MovieCharacterRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +16,7 @@ public class MovieCharacterController {
     @Autowired
     private MovieCharacterRepository movieCharacterRepository;
 
+    //Return all movie characters
     @GetMapping()
     public ResponseEntity<List<MovieCharacter>> getAllMovieCharacters(){
         List<MovieCharacter> movieCharacters = movieCharacterRepository.findAll();
@@ -24,6 +24,8 @@ public class MovieCharacterController {
         return new ResponseEntity<>(movieCharacters, status);
     }
 
+    //Returns a movie character by id
+    //Checks if the character exists, if not return Not Found
     @GetMapping("/{id}")
     public ResponseEntity<MovieCharacter> getMovieCharacter(@PathVariable Long id){
         MovieCharacter returnMovieCharacter = new MovieCharacter();
@@ -38,6 +40,7 @@ public class MovieCharacterController {
         return new ResponseEntity<>(returnMovieCharacter, status);
     }
 
+    //Adds a movie character to the database
     @PostMapping
     public ResponseEntity<MovieCharacter> addMovieCharacter(@RequestBody MovieCharacter movieCharacter){
         HttpStatus status;
@@ -46,6 +49,8 @@ public class MovieCharacterController {
         return new ResponseEntity<>(movieCharacter, status);
     }
 
+    //Updates a movie character in the database
+    //Checks if path variable id matches request body id before update
     @PutMapping("/{id}")
     public ResponseEntity<MovieCharacter> updateMovieCharacter(@PathVariable Long id,
                                                                @RequestBody MovieCharacter movieCharacter){
@@ -61,6 +66,7 @@ public class MovieCharacterController {
         return new ResponseEntity<>(returnMovieCharacter, status);
     }
 
+    //Soft deletes a movie character
     @DeleteMapping("/{id}")
     public ResponseEntity<MovieCharacter> deleteMovieCharacter(@PathVariable long id) {
         HttpStatus status;

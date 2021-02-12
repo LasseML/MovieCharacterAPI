@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Entity
-@Where(clause = "DELETED = 0")
+@Where(clause = "DELETED = 0") //Use soft delete
 @Table(name="movie_character")
 public class MovieCharacter {
 
@@ -35,6 +35,7 @@ public class MovieCharacter {
     @Column(name = "DELETED")
     private Integer deleted = 0;
 
+    //creates a many to many relationship with movies
     @ManyToMany
     @JoinTable(
             name = "movie_moviecharacter",
@@ -43,6 +44,7 @@ public class MovieCharacter {
     )
     private List<Movie> movies;
 
+    //JsonGetter returns movies as list of links
     @JsonGetter("movies")
     public List<String> moviesGetter() {
         if(movies != null){

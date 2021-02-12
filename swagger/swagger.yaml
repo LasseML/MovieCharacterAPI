@@ -71,7 +71,7 @@ paths:
           description: "Franchise object that needs to be added to the store"
           required: true
           schema:
-            $ref: "#/definitions/Franchise"
+            $ref: "#/definitions/CreateFranchise"
         responses:
           '204':
             description: object updated
@@ -191,7 +191,7 @@ paths:
           description: "Movie object that needs to be updated"
           required: true
           schema:
-            $ref: "#/definitions/Movie"
+            $ref: "#/definitions/CreateMovie"
         responses:
           '204':
             description: object updated
@@ -223,7 +223,7 @@ paths:
             schema:
               type: "array"
               items:
-                $ref: '#/definitions/MovieCharacter'
+                $ref: '#/definitions/ReturnMovieCharacter'
           '404':
             description: No movie with the given id
   /character:
@@ -288,10 +288,10 @@ paths:
           type: "integer"
         - in: "body"
           name: "body"
-          description: "movie character object that needs to be added to the store"
+          description: "movie character object that needs to be updated"
           required: true
           schema:
-            $ref: "#/definitions/MovieCharacter"
+            $ref: "#/definitions/CreateMovieCharacter"
         responses:
           '204':
             description: object updated
@@ -307,22 +307,6 @@ paths:
           '204':
             description: Franchise Movie Character deleted successfully
 definitions:
-  Franchise:
-    type: "object"
-    properties:
-      id:
-        type: "integer"
-      name:
-        type: "string"
-      description:
-        type: "string"
-      movies:
-        type: "array"
-        items:
-          type: "object"
-          properties:
-            id:
-              type: integer
   ReturnFranchise:
     type: "object"
     properties:
@@ -350,36 +334,6 @@ definitions:
       properties:
         id:
           type: integer
-  Movie:
-    type: "object"
-    properties:
-      id:
-        type: "integer"
-      title:
-        type: "string"
-      genre:
-        type: "string"
-      release:
-        type: "string"
-        format: "date"
-      director:
-        type: "string"
-      picture:
-        type: "string"
-      trailer:
-        type: "string"
-      franchise:
-        type: "object"
-        properties:
-          id:
-            type: "integer"
-      movieCharacters:
-        type: "array"
-        items:
-          type: "object"
-          properties:
-            id:
-              type: integer
   ReturnMovie:
     type: "object"
     properties:
@@ -426,29 +380,6 @@ definitions:
           id:
             type: integer
       movieCharacters:
-        type: "array"
-        items:
-          type: "object"
-          properties:
-            id:
-              type: integer
-  MovieCharacter:
-    type: "object"
-    properties:
-      id:
-        type: "integer"
-      firstName:
-        type: "string"
-      lastName:
-        type: "string"
-      alias:
-        type: "string"
-      gender:
-        type: "string"
-        enum: [FEMALE, MALE, OTHER]
-      picture:
-        type: "string"
-      movies:
         type: "array"
         items:
           type: "object"

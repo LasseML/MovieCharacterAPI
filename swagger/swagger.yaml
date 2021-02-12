@@ -1,0 +1,336 @@
+swagger: "2.0"
+info:
+  title: Movie Character API
+  description: Movie Character API description
+  version: 1.0.0
+host: "localhost:8080"
+basePath: "/api/v1"
+paths:
+  /franchise:
+    get:
+        description: Get all franchises
+        produces:
+        - application/json
+        responses:
+          '200':
+            description: A list of franchises
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/ReturnFranchise'
+    post:
+      description: Add a franchise.
+      consumes:
+      - "application/json"
+      produces:
+      - application/json
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Franchise object to be added to the db"
+        required: true
+        schema:
+          $ref: "#/definitions/Franchise"
+      responses:
+        '200':
+          description: The new franchise
+          schema:
+            $ref: '#/definitions/Franchise'
+  /franchise/{id}:
+      get:
+        description: Get the Franchise with the given id
+        produces:
+        - application/json
+        parameters:
+        - name: "id"
+          in: "path"
+          description: "ID of Franchise to return"
+          required: true
+          type: "integer"
+          format: "int64"
+        responses:
+          '200':
+            description: The Franchise with the given id.
+            schema:
+              $ref: '#/definitions/ReturnFranchise'
+      put:
+        description: Update the Franchise with the given id.
+        consumes:
+        - "application/json"
+        produces:
+        - application/json
+        parameters:
+        - name: "id"
+          in: "path"
+          description: "ID of Franchise to update"
+          required: true
+          type: "integer"
+          format: "int64"
+        - in: "body"
+          name: "body"
+          description: "Franchise object that needs to be added to the store"
+          required: true
+          schema:
+            $ref: "#/definitions/Franchise"
+        responses:
+          '200':
+            description: The Franchise with the given id.
+            schema:
+              $ref: '#/definitions/MovieCharacter'
+  /movie:
+    get:
+        description: Get all movies
+        produces:
+        - application/json
+        responses:
+          '200':
+            description: A list of movies
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/ReturnMovie'
+    post:
+      description: Add a movie.
+      consumes:
+      - "application/json"
+      produces:
+      - application/json
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Movie object to be added to the db"
+        required: true
+        schema:
+          $ref: "#/definitions/Movie"
+      responses:
+        '200':
+          description: The new movie
+          schema:
+            $ref: '#/definitions/Movie'
+  /movie/{id}:
+      get:
+        description: Get the movie with the given id
+        produces:
+        - application/json
+        parameters:
+        - name: "id"
+          in: "path"
+          description: "ID of movie to return"
+          required: true
+          type: "integer"
+          format: "int64"
+        responses:
+          '200':
+            description: The movie with the given id.
+            schema:
+              $ref: '#/definitions/ReturnMovie'
+      put:
+        description: Update the movie with the given id.
+        consumes:
+        - "application/json"
+        produces:
+        - application/json
+        parameters:
+        - name: "id"
+          in: "path"
+          description: "ID of movie to update"
+          required: true
+          type: "integer"
+          format: "int64"
+        - in: "body"
+          name: "body"
+          description: "Movie object that needs to be added to the store"
+          required: true
+          schema:
+            $ref: "#/definitions/Movie"
+        responses:
+          '200':
+            description: The movie with the given id.
+            schema:
+              $ref: '#/definitions/Movie'
+  /character:
+      get:
+        description: Get all movie characters
+        produces:
+        - application/json
+        responses:
+          '200':
+            description: A list of movie characters.
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/ReturnMovieCharacter'
+      post:
+        description: Add a movie character.
+        consumes:
+        - "application/json"
+        produces:
+        - application/json
+        parameters:
+        - in: "body"
+          name: "body"
+          description: "Movie character object that needs to be added to the db"
+          required: true
+          schema:
+            $ref: "#/definitions/MovieCharacter"
+        responses:
+          '200':
+            description: The movie character with the given id.
+            schema:
+              $ref: '#/definitions/MovieCharacter'
+  /character/{id}:
+      get:
+        description: Returns the movie character with the given id
+        produces:
+        - application/json
+        parameters:
+        - name: "id"
+          in: "path"
+          description: "ID of movie character to return"
+          required: true
+          type: "integer"
+          format: "int64"
+        responses:
+          '200':
+            description: The movie character with the given id.
+            schema:
+              $ref: '#/definitions/ReturnMovieCharacter'
+      put:
+        description: Update the movie character with the given id.
+        consumes:
+        - "application/json"
+        produces:
+        - application/json
+        parameters:
+        - name: "id"
+          in: "path"
+          description: "ID of movie character to update"
+          required: true
+          type: "integer"
+          format: "int64"
+        - in: "body"
+          name: "body"
+          description: "movie character object that needs to be added to the store"
+          required: true
+          schema:
+            $ref: "#/definitions/MovieCharacter"
+        responses:
+          '200':
+            description: The movie character with the given id.
+            schema:
+              $ref: '#/definitions/MovieCharacter'
+definitions:
+  Franchise:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+      name:
+        type: "string"
+      description:
+        type: "string"
+      movies:
+        type: "array"
+        items:
+          $ref: '#/definitions/Movie'
+  ReturnFranchise:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+      name:
+        type: "string"
+      description:
+        type: "string"
+      movies:
+        type: "array"
+        items:
+          type: "string"
+  Movie:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+      title:
+        type: "string"
+      genre:
+        type: "string"
+      release:
+        type: "string"
+        format: "date"
+      director:
+        type: "string"
+      picture:
+        type: "string"
+      trailer:
+        type: "string"
+      franchise:
+        $ref: '#/definitions/Franchise'
+      movieCharacters:
+        type: "array"
+        items:
+          $ref: '#/definitions/MovieCharacter'
+  ReturnMovie:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+      title:
+        type: "string"
+      genre:
+        type: "string"
+      release:
+        type: "string"
+        format: "date"
+      director:
+        type: "string"
+      picture:
+        type: "string"
+      trailer:
+        type: "string"
+      franchise:
+        type: "string"
+      movieCharacters:
+        type: "array"
+        items:
+          type: "string"
+  MovieCharacter:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+      firstName:
+        type: "string"
+      lastName:
+        type: "string"
+      alias:
+        type: "string"
+      gender:
+        type: "string"
+        enum: [FEMALE, MALE, OTHER]
+      picture:
+        type: "string"
+      movies:
+        type: "array"
+        items: 
+          $ref: '#/definitions/Movie'
+  ReturnMovieCharacter:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+      firstName:
+        type: "string"
+      lastName:
+        type: "string"
+      alias:
+        type: "string"
+      gender:
+        type: "string"
+        enum: [FEMALE, MALE, OTHER]
+      picture:
+        type: "string"
+      movies:
+        type: "array"
+        items: 
+          type: "string"

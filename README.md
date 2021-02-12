@@ -3,7 +3,20 @@
 The application is constructed by using Spring and Hibernate.
 It uses PostgreSQL database which stores information about characters, the movies
 they appear in, and the franchises they belong to. There is some data included, but notice it
-drops all changes on server reboot.
+drops all changes on server reboot (by design).
+
+## Deployment
+A running instance can be found at https://norcharapi.herokuapp.com and the documentation at <https://norcharapi.herokuapp.com/docs/index.html>
+
+Commands used to deploy:
+
+```
+heroku login
+heroku create norcharapi --region eu
+heroku container:login
+heroku container:push web --app nitunes
+heroku container:release -a norcharapi web
+```
 
 ## Developers
 

@@ -64,12 +64,14 @@ public class MovieController {
     @GetMapping("/{id}/characters")
     public ResponseEntity<List<MovieCharacter>> getAllCharactersInMovie(@PathVariable Long id){
         HttpStatus status;
+        List<MovieCharacter> characters = null;
         if(movieRepository.existsById(id)) {
+            Movie movie = movieRepository.getOne(id);
+            characters = movie.getMovieCharacters();
             status = HttpStatus.OK;
         } else {
             status = HttpStatus.NOT_FOUND;
         }
-        List<MovieCharacter> characters = movieCharacterRepository.findAll();
         return new ResponseEntity<>(characters, status);
     }
     

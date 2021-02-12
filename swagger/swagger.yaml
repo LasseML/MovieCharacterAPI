@@ -30,12 +30,12 @@ paths:
         description: "Franchise object to be added to the db"
         required: true
         schema:
-          $ref: "#/definitions/Franchise"
+          $ref: "#/definitions/CreateFranchise"
       responses:
         '201':
           description: The new franchise
           schema:
-            $ref: '#/definitions/Franchise'
+            $ref: '#/definitions/ReturnFranchise'
   /franchise/{id}:
       get:
         description: Get the Franchise with the given id
@@ -47,7 +47,6 @@ paths:
           description: "ID of Franchise to return"
           required: true
           type: "integer"
-          format: "int64"
         responses:
           '200':
             description: The Franchise with the given id.
@@ -67,7 +66,6 @@ paths:
           description: "ID of Franchise to update"
           required: true
           type: "integer"
-          format: "int64"
         - in: "body"
           name: "body"
           description: "Franchise object that needs to be added to the store"
@@ -79,6 +77,17 @@ paths:
             description: The Franchise with the given id.
             schema:
               $ref: '#/definitions/MovieCharacter'
+      delete:
+        description: Delete the Franchise with the given id.
+        parameters:
+          - name: "id"
+            in: "path"
+            description: "ID of Franchise to delete"
+            required: true
+            type: "integer"
+        responses:
+          '204':
+            description: Franchise deleted successfully
   /movie:
     get:
         description: Get all movies
@@ -103,12 +112,12 @@ paths:
         description: "Movie object to be added to the db"
         required: true
         schema:
-          $ref: "#/definitions/Movie"
+          $ref: "#/definitions/CreateMovie"
       responses:
         '201':
           description: The new movie
           schema:
-            $ref: '#/definitions/Movie'
+            $ref: '#/definitions/ReturnMovie'
   /movie/{id}:
       get:
         description: Get the movie with the given id
@@ -120,7 +129,6 @@ paths:
           description: "ID of movie to return"
           required: true
           type: "integer"
-          format: "int64"
         responses:
           '200':
             description: The movie with the given id.
@@ -140,7 +148,6 @@ paths:
           description: "ID of movie to update"
           required: true
           type: "integer"
-          format: "int64"
         - in: "body"
           name: "body"
           description: "Movie object that needs to be updated"
@@ -151,7 +158,18 @@ paths:
           '200':
             description: The movie with the given id.
             schema:
-              $ref: '#/definitions/Movie'
+              $ref: '#/definitions/ReturnMovie'
+      delete:
+        description: Delete the Movie with the given id.
+        parameters:
+          - name: "id"
+            in: "path"
+            description: "ID of Movie to delete"
+            required: true
+            type: "integer"
+        responses:
+          '204':
+            description: Franchise deleted successfully
   /character:
       get:
         description: Get all movie characters
@@ -176,12 +194,12 @@ paths:
           description: "Movie character object that needs to be added to the db"
           required: true
           schema:
-            $ref: "#/definitions/MovieCharacter"
+            $ref: "#/definitions/CreateMovieCharacter"
         responses:
           '201':
             description: The movie character with the given id.
             schema:
-              $ref: '#/definitions/MovieCharacter'
+              $ref: '#/definitions/ReturnMovieCharacter'
   /character/{id}:
       get:
         description: Returns the movie character with the given id
@@ -193,7 +211,6 @@ paths:
           description: "ID of movie character to return"
           required: true
           type: "integer"
-          format: "int64"
         responses:
           '200':
             description: The movie character with the given id.
@@ -213,7 +230,6 @@ paths:
           description: "ID of movie character to update"
           required: true
           type: "integer"
-          format: "int64"
         - in: "body"
           name: "body"
           description: "movie character object that needs to be added to the store"
@@ -224,7 +240,18 @@ paths:
           '200':
             description: The movie character with the given id.
             schema:
-              $ref: '#/definitions/MovieCharacter'
+              $ref: '#/definitions/ReturnMovieCharacter'
+      delete:
+        description: Delete the Movie Character with the given id.
+        parameters:
+          - name: "id"
+            in: "path"
+            description: "ID of Franchise to delete"
+            required: true
+            type: "integer"
+        responses:
+          '204':
+            description: Franchise Movie Character deleted successfully
 definitions:
   Franchise:
     type: "object"
@@ -238,7 +265,10 @@ definitions:
       movies:
         type: "array"
         items:
-          $ref: '#/definitions/Movie'
+          type: "object"
+          properties:
+            id:
+              type: integer
   ReturnFranchise:
     type: "object"
     properties:
@@ -252,6 +282,20 @@ definitions:
         type: "array"
         items:
           type: "string"
+  CreateFranchise:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+      description:
+        type: "string"
+      movies:
+        type: "array"
+    items:
+      type: "object"
+      properties:
+        id:
+          type: integer
   Movie:
     type: "object"
     properties:
@@ -271,11 +315,17 @@ definitions:
       trailer:
         type: "string"
       franchise:
-        $ref: '#/definitions/Franchise'
+        type: "object"
+        properties:
+          id:
+            type: "integer"
       movieCharacters:
         type: "array"
         items:
-          $ref: '#/definitions/MovieCharacter'
+          type: "object"
+          properties:
+            id:
+              type: integer
   ReturnMovie:
     type: "object"
     properties:
@@ -300,6 +350,31 @@ definitions:
         type: "array"
         items:
           type: "string"
+  CreateMovie:
+    type: "object"
+    properties:
+      title:
+        type: "string"
+      genre:
+        type: "string"
+      release:
+        type: "string"
+        format: "date"
+      director:
+        type: "string"
+      picture:
+        type: "string"
+      trailer:
+        type: "string"
+      franchise:
+        type: "string"
+      movieCharacters:
+        type: "array"
+        items:
+          type: "object"
+          properties:
+            id:
+              type: integer
   MovieCharacter:
     type: "object"
     properties:
@@ -318,8 +393,11 @@ definitions:
         type: "string"
       movies:
         type: "array"
-        items: 
-          $ref: '#/definitions/Movie'
+        items:
+          type: "object"
+          properties:
+            id:
+              type: integer
   ReturnMovieCharacter:
     type: "object"
     properties:
@@ -340,3 +418,24 @@ definitions:
         type: "array"
         items: 
           type: "string"
+  CreateMovieCharacter:
+    type: "object"
+    properties:
+      firstName:
+        type: "string"
+      lastName:
+        type: "string"
+      alias:
+        type: "string"
+      gender:
+        type: "string"
+        enum: [FEMALE, MALE, OTHER]
+      picture:
+        type: "string"
+      movies:
+        type: "array"
+        items:
+          type: "object"
+          properties:
+            id:
+              type: integer

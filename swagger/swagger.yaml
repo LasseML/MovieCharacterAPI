@@ -108,6 +108,26 @@ paths:
               $ref: '#/definitions/ReturnMovieCharacter'
         '400':
           description: No franchise with the given id.
+  /franchise/{id}/movies:
+    get:
+      description: Get all movies in the given franchise
+      produces:
+        - application/json
+      parameters:
+        - name: "id"
+          in: "path"
+          description: "ID of franchise to return"
+          required: true
+          type: "integer"
+      responses:
+        '200':
+          description: The Franchise with the given id.
+          schema:
+            type: "array"
+            items:
+              $ref: '#/definitions/ReturnMovie'
+        '400':
+          description: No franchise with the given id.
   /movie:
     get:
         description: Get all movies

@@ -76,6 +76,17 @@ public class FranchiseController {
         return ResponseEntity.notFound().build();
     }
 
+    @GetMapping("/{id}/movies")
+    public ResponseEntity<List<Movie>> getFranchiseMovies(@PathVariable long id) {
+        if (franchiseRepository.existsById(id)) {
+            Franchise franchise = franchiseRepository.getOne(id);
+            return ResponseEntity.ok(franchise.getMovies());
+        }
+        return ResponseEntity.notFound().build();
+    }
+
+
+
     @ExceptionHandler(IllegalArgumentException.class)
     @ResponseStatus( HttpStatus.BAD_REQUEST )
     public void IllegalArgumentHandler(HttpServletRequest req, Exception ex) {

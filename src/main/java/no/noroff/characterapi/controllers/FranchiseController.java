@@ -45,9 +45,11 @@ public class FranchiseController {
 
     @PutMapping("/{id}")
     public ResponseEntity<Franchise> updateFranchise(@PathVariable long id, @RequestBody Franchise franchise) {
-        if (id == franchise.getId() && franchiseRepository.existsById(id))
-            return ResponseEntity.ok(franchiseRepository.save(franchise));
-        return new ResponseEntity<>(new Franchise(), HttpStatus.BAD_REQUEST);
+        if (id == franchise.getId() && franchiseRepository.existsById(id)) {
+            franchiseRepository.save(franchise);
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.badRequest().build();
     }
 
     @DeleteMapping("/{id}")
